@@ -1,9 +1,14 @@
-# from pydantic import BaseModel
-# from uuid import UUID, uuid4
-# from typing import Optional, List
-# from enum import Enum
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
+from .database import Base
 
 
-# class Blog(BaseModel):
-#     title: str
-#     body: str
+class Blog(Base):
+
+    __tablename__ = 'blogs'
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    body = Column(String)
+
+    # items = relationship("Item", back_populates="owner")
